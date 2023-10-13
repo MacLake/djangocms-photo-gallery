@@ -81,6 +81,17 @@ all = [
   "typing",
 ]
 
+[tool.yapf]
+based_on_style = "facebook"
+SPLIT_BEFORE_BITWISE_OPERATOR = true
+SPLIT_BEFORE_ARITHMETIC_OPERATOR = true
+SPLIT_BEFORE_LOGICAL_OPERATOR = true
+SPLIT_BEFORE_DOT = true
+
+[tool.yapfignore]
+ignore_patterns = [
+]
+
 [tool.black]
 target-version = ["py39"]
 line-length = 120

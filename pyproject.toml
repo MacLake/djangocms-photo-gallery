@@ -91,15 +91,16 @@ target-version = "py39"
 line-length = 120
 select = [
   "A",
-  "ARG",
+  # "ARG",
   "B",
   "C",
   "DTZ",
-  "E",
+  "DJ",  # flake8-django
+  "E",  # pycodestyle error
   "EM",
-  "F",
+  "F",  # Pyflakes
   "FBT",
-  "I",
+  "I",  # isort
   "ICN",
   "ISC",
   "N",
@@ -112,8 +113,8 @@ select = [
   "S",
   "T",
   "TID",
-  "UP",
-  "W",
+  "UP",  # pyupgrade
+  "W",  # pycodestyle warning
   "YTT",
 ]
 ignore = [
@@ -125,14 +126,20 @@ ignore = [
   "S105", "S106", "S107",
   # Ignore complexity
   "C901", "PLR0911", "PLR0912", "PLR0913", "PLR0915",
+  "TID252",  # relative-imports
+  "RUF001",  # ambiguous-unicode-character-string
+  "RUF012",  # mutable-class-default
 ]
 unfixable = [
   # Don't touch unused imports
-  "F401",
+  # "F401",
 ]
 
 [tool.ruff.isort]
 known-first-party = ["djangocms_photo_gallery"]
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "single"
 
 [tool.ruff.flake8-tidy-imports]
 ban-relative-imports = "all"
@@ -140,6 +147,7 @@ ban-relative-imports = "all"
 [tool.ruff.per-file-ignores]
 # Tests can use magic values, assertions, and relative imports
 "tests/**/*" = ["PLR2004", "S101", "TID252"]
+"*/migrations/*" = ["E501"]  # Line too long
 
 [tool.coverage.run]
 source_pkgs = ["djangocms_photo_gallery", "tests"]

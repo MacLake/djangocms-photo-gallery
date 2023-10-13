@@ -26,6 +26,8 @@ dependencies = [
   "Django",
   "django-cms",
   "easy-thumbnails",
+  "django-parler",
+  "djangocms_text_ckeditor",
 ]
 
 [project.urls]

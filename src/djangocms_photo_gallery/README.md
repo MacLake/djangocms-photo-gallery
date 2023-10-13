@@ -21,6 +21,8 @@ In the settings of the project (e. g. `settings.py`), you need to add entries in
 INSTALLED_APPS: list = [
     # …
     'easy_thumbnails',
+    'django-parler',
+    'djangocms_text_ckeditor',
     'djangocms_photo_gallery',
 ]
 

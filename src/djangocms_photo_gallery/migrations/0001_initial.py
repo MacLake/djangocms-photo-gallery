@@ -20,11 +20,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Album',
             fields=[
-                ('id',
-                 models.BigAutoField(auto_created=True,
-                                     primary_key=True,
-                                     serialize=False,
-                                     verbose_name='ID')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'album',
@@ -35,19 +39,30 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AlbumPicture',
             fields=[
-                ('id',
-                 models.BigAutoField(auto_created=True,
-                                     primary_key=True,
-                                     serialize=False,
-                                     verbose_name='ID')),
-                ('picture',
-                 easy_thumbnails.fields.ThumbnailerImageField(
-                     upload_to='djangocms_photo_gallery',
-                     verbose_name='picture')),
-                ('album',
-                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
-                                   to='djangocms_photo_gallery.album',
-                                   verbose_name='album')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
+                (
+                    'picture',
+                    easy_thumbnails.fields.ThumbnailerImageField(
+                        upload_to='djangocms_photo_gallery',
+                        verbose_name='picture'
+                    )
+                ),
+                (
+                    'album',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='djangocms_photo_gallery.album',
+                        verbose_name='album'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'album picture',
@@ -58,19 +73,26 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AlbumPlugin',
             fields=[
-                ('cmsplugin_ptr',
-                 models.OneToOneField(
-                     auto_created=True,
-                     on_delete=django.db.models.deletion.CASCADE,
-                     parent_link=True,
-                     primary_key=True,
-                     related_name='%(app_label)s_%(class)s',
-                     serialize=False,
-                     to='cms.cmsplugin')),
-                ('album',
-                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
-                                   to='djangocms_photo_gallery.album',
-                                   verbose_name='album')),
+                (
+                    'cmsplugin_ptr',
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        related_name='%(app_label)s_%(class)s',
+                        serialize=False,
+                        to='cms.cmsplugin'
+                    )
+                ),
+                (
+                    'album',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='djangocms_photo_gallery.album',
+                        verbose_name='album'
+                    )
+                ),
             ],
             options={
                 'abstract': False,
@@ -80,26 +102,39 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AlbumTranslation',
             fields=[
-                ('id',
-                 models.BigAutoField(auto_created=True,
-                                     primary_key=True,
-                                     serialize=False,
-                                     verbose_name='ID')),
-                ('language_code',
-                 models.CharField(db_index=True,
-                                  max_length=15,
-                                  verbose_name='Language')),
-                ('name',
-                 models.CharField(blank=True,
-                                  max_length=100,
-                                  verbose_name='name of album')),
-                ('master',
-                 parler.fields.TranslationsForeignKey(
-                     editable=False,
-                     null=True,
-                     on_delete=django.db.models.deletion.CASCADE,
-                     related_name='translations',
-                     to='djangocms_photo_gallery.album')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
+                (
+                    'language_code',
+                    models.CharField(
+                        db_index=True, max_length=15, verbose_name='Language'
+                    )
+                ),
+                (
+                    'name',
+                    models.CharField(
+                        blank=True,
+                        max_length=100,
+                        verbose_name='name of album'
+                    )
+                ),
+                (
+                    'master',
+                    parler.fields.TranslationsForeignKey(
+                        editable=False,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='translations',
+                        to='djangocms_photo_gallery.album'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'album Translation',
@@ -114,33 +149,51 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AlbumPictureTranslation',
             fields=[
-                ('id',
-                 models.BigAutoField(auto_created=True,
-                                     primary_key=True,
-                                     serialize=False,
-                                     verbose_name='ID')),
-                ('language_code',
-                 models.CharField(db_index=True,
-                                  max_length=15,
-                                  verbose_name='Language')),
-                ('title',
-                 models.CharField(blank=True,
-                                  max_length=50,
-                                  verbose_name='title')),
-                ('caption',
-                 djangocms_text_ckeditor.fields.HTMLField(
-                     blank=True, verbose_name='caption')),
-                ('copyright_notice',
-                 models.CharField(blank=True,
-                                  max_length=50,
-                                  verbose_name='copyright notice')),
-                ('master',
-                 parler.fields.TranslationsForeignKey(
-                     editable=False,
-                     null=True,
-                     on_delete=django.db.models.deletion.CASCADE,
-                     related_name='translations',
-                     to='djangocms_photo_gallery.albumpicture')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
+                (
+                    'language_code',
+                    models.CharField(
+                        db_index=True, max_length=15, verbose_name='Language'
+                    )
+                ),
+                (
+                    'title',
+                    models.CharField(
+                        blank=True, max_length=50, verbose_name='title'
+                    )
+                ),
+                (
+                    'caption',
+                    djangocms_text_ckeditor.fields.HTMLField(
+                        blank=True, verbose_name='caption'
+                    )
+                ),
+                (
+                    'copyright_notice',
+                    models.CharField(
+                        blank=True,
+                        max_length=50,
+                        verbose_name='copyright notice'
+                    )
+                ),
+                (
+                    'master',
+                    parler.fields.TranslationsForeignKey(
+                        editable=False,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='translations',
+                        to='djangocms_photo_gallery.albumpicture'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'album picture Translation',
